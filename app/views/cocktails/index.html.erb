@@ -1,16 +1,29 @@
-<%= image_tag "banner.jpg", class: "banner" %>
+
+<div class="banner"   <%= image_tag "banner.jpg", class: "banner" %>, style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))>
+  <div class="container">
+    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
+</div>
 
 <div class="container-lg">
+  <h1>Cocktails</h1>
+  <ul>
+    <% @cocktails.each do |cocktail| %>
+      <li><%= link_to cocktail.name, cocktail_path(cocktail) %> </li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-primary" %>
+
+  </div>
 
 
-<h1>Cocktails</h1>
-
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail) %> </li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-primary" %>
-
+  <%= image_tag "banner.jpg", class: "banner" %>
+    <div class="container">
+      <h1>Fancy coktails</h1>
+      <p>Have a taste of your own fancy cocktail!</p>
+      <a class="btn btn-flat" href="#">Explore now</a>
+    </div>
 </div>

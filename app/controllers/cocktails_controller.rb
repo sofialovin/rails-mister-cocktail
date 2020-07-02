@@ -12,13 +12,20 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @cocktail = Cocktail.new(review_params)
-    @cocktail.save
+    @cocktail = Cocktail.new(cocktail_params)
+    @cocktail.save!
     redirect_to cocktail_path(@cocktail)
   end
 
+  def destroy
+    @cocktail = Cocktail.find(params[:id])
+    @cocktail.destroy
+
+    redirect_to cocktails_path(@cocktail)
+  end
+
   private
-  def review_params
-    params.require(:cocktail).permit(:name)
+  def cocktail_params
+    params.require(:cocktail).permit(:name, :photo)
   end
 end

@@ -1,19 +1,41 @@
-<p> Name: <%= @cocktail.name %> </p>
 
-<p> Instructions: </p>
-<% @cocktail.doses.each do |dose| %>
-  <p><%= dose.description %></p>
-  <p> <%= dose.ingredient.name %></p>
-  <%= link_to 'Delete dosage', cocktail_dose_path(@cocktail, dose),
+<!-- <div class="card-category">
+ -->
+<div class="container">
+  <h1>  <%= @cocktail.name %> </h1>
+
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="card-tags">
+
+      <% @cocktail.doses.each do |dose| %>
+         <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
+        <span><%= dose.description %></span>
+        <span> <%= dose.ingredient.name %></span>
+        <%= link_to 'Delete dosage', cocktail_dose_path(@cocktail, dose),
                         method: :delete,
                         data: { confirm: "Are you sure?" },
-                        class: "btn btn-primary" %>
-<% end %>
+                        class: "btn btn-ghost" %>
+
+      <% end %>
 
 
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Add new ingredients and doses', new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
 
-<%= link_to 'Back to list', cocktails_path, class: "btn btn-primary" %>
+<div class="row justify-content-center mt-3">
+    <div class="col-4">
+    <%= link_to "Delete", cocktail_path(@cocktail),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "btn btn-ghost" %>
+    <%= link_to "Add dosage", new_cocktail_dose_path(@cocktail), class: "btn btn-ghost" %>
 
+    <%= link_to 'Back to list', cocktails_path, class: "btn btn-ghost" %>
+    </div>
+</div>
 

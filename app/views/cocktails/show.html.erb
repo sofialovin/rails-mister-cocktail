@@ -3,25 +3,20 @@
  -->
 <div class="container">
   <h1>  <%= @cocktail.name %> </h1>
-
 </div>
 
   <div class="container">
     <div class="row">
       <div class="card-tags">
-
       <% @cocktail.doses.each do |dose| %>
-         <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
+        <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
         <span><%= dose.description %></span>
         <span> <%= dose.ingredient.name %></span>
         <%= link_to 'Delete dosage', cocktail_dose_path(@cocktail, dose),
                         method: :delete,
                         data: { confirm: "Are you sure?" },
                         class: "btn btn-ghost" %>
-
       <% end %>
-
-
       </div>
     </div>
   </div>
